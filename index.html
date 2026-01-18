@@ -1,7 +1,7 @@
 <html lang="zh-CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>理财记账 - 轻松管理您的财务</title>
+    <title>大财主</title>
     <!-- Tailwind CSS v3 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -339,10 +339,10 @@
 <body class="font-sans text-gray-800 min-h-screen relative bg-dark-300">
     <!-- 密码锁模态框 -->
     <div id="passwordModal" class="fixed inset-0 z-[100] flex items-center justify-center" style="background: linear-gradient(135deg, #c21818 0%, #a01414 50%, #851414 100%);">
-        <div class="bg-white rounded-xl p-8 w-11/12 max-w-md animate-fade-in-up glass">
+        <div class="bg-white rounded-xl p-8 w-11/12 max-w-md animate-fade-in-up glass" style="background-image: url('https://p3-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/6ff859d836b341e3bb48bb43bd625ed3.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260117215230DB7748423FD12A7B3DBB&rrcfp=8a172a1a&x-expires=1769262751&x-signature=Xw94Qv5%2Bxy216OrVCknFoBDXmNo%3D'); background-size: cover; background-position: center;">
             <div class="space-y-4 mb-6">
                 <div>
-                    <input type="password" id="passwordInput" class="w-full border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="请输入6位数字密码">
+                    <input type="password" id="passwordInput" class="w-full border-2 border-yellow-500 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent bg-white/90 text-gray-800 placeholder-gray-600" placeholder="请输入6位数字密码">
                 </div>
                 
                 <div class="text-center text-red-500 text-sm hidden" id="passwordError">
@@ -388,13 +388,19 @@
         <!-- 仪表盘页面 -->
         <div id="dashboardPage" class="page active">
             <!-- 欢迎卡片 -->
-            <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-6 text-gray-800 mb-6 animate-fade-in-up glass">
-                <div class="flex justify-between items-center">
+            <div class="rounded-2xl p-6 text-gray-800 mb-6 animate-fade-in-up overflow-hidden relative">
+                <!-- 五福临门背景图片 -->
+                <div class="absolute inset-0 z-0">
+                    <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/64622f5e2a9b4fbc8abb3baf8a9ebaa3.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&amp;rcl=20260117210838E4E06229E8B5168533A8&amp;rrcfp=8a172a1a&amp;x-expires=1769260118&amp;x-signature=IEBSifLGyv7v5hUXVHqTDSAvUuM%3D" alt="五福临门" class="w-full h-full object-cover">
+                </div>
+                <!-- 半透明遮罩 -->
+                <div class="absolute inset-0 bg-black/20 z-10"></div>
+                <div class="flex justify-between items-center relative z-20">
                     <div>
-                        <h2 class="text-2xl font-bold text-yellow-500 text-shadow cursor-pointer hover:text-yellow-300 transition-colors" id="helloUserBtn">你好，大财主</h2>
-                        <p class="opacity-90">今天是 <span id="currentDate"></span></p>
+                        <h2 class="text-base sm:text-lg font-bold text-yellow-300 text-shadow-lg cursor-pointer hover:text-yellow-200 transition-colors" id="helloUserBtn">你好，大财主</h2>
+                        <p class="opacity-90 text-white text-shadow text-xs sm:text-sm">今天是 <span id="currentDate"></span></p>
                     </div>
-                    <div class="text-4xl cursor-pointer hover:scale-110 transition-transform" id="statsIconBtn">
+                    <div class="text-xl sm:text-2xl cursor-pointer hover:scale-110 transition-transform text-yellow-300" id="statsIconBtn">
                         <i class="fa fa-line-chart"></i>
                     </div>
                 </div>
@@ -402,21 +408,25 @@
 
             <!-- 财务概览卡片 -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div class="bg-dark-200/50 border border-white/10 rounded-xl p-5 glass card-hover animate-fade-in-up" style="animation-delay: 0.1s">
+                <div class="bg-dark-200/50 border border-white/10 rounded-xl p-5 glass card-hover animate-fade-in-up" style="animation-delay: 0.1s; background-image: url('https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/ea5852e616734375a4f58deb4bbc5659.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260117220954612832D9AAF2F67A99B9&rrcfp=8a172a1a&x-expires=1769263794&x-signature=9EcJy2%2B3QW33se8aGpt4pPfKk6Q%3D'); background-size: cover; background-position: center;">
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="text-base sm:text-lg font-semibold text-gray-800/90">本月收入</h3>
-                        <i class="fa fa-arrow-up text-income text-lg sm:text-xl"></i>
+                        <div class="w-10 h-10 flex items-center justify-center text-yellow-500">
+                            <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                        </div>
                     </div>
                     <p class="text-2xl sm:text-3xl font-bold text-income" id="monthlyIncome">¥0</p>
                 </div>
-                <div class="bg-dark-200/50 border border-white/10 rounded-xl p-5 glass card-hover animate-fade-in-up" style="animation-delay: 0.2s">
+                <div class="bg-dark-200/50 border border-white/10 rounded-xl p-5 glass card-hover animate-fade-in-up" style="animation-delay: 0.2s; background-image: url('https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/df1654e408b448d1bfa0e23471eaee63.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=20260117223327F5F3FF6D46EAA37D5091&rrcfp=8a172a1a&x-expires=1769265208&x-signature=dG4jluwmjuh4mlxaqdnJE9gsM%2Fk%3D'); background-size: cover; background-position: center;">
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="text-base sm:text-lg font-semibold text-gray-800/90">本月支出</h3>
-                        <i class="fa fa-arrow-down text-expense text-lg sm:text-xl"></i>
+                        <div class="w-10 h-10 flex items-center justify-center text-red-500">
+                            <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                        </div>
                     </div>
                     <p class="text-2xl sm:text-3xl font-bold text-expense" id="monthlyExpense">¥0</p>
                 </div>
-                <div class="bg-dark-200/50 border border-white/10 rounded-xl p-5 glass card-hover animate-fade-in-up" style="animation-delay: 0.3s">
+                <div class="bg-dark-200/50 border border-white/10 rounded-xl p-5 glass card-hover animate-fade-in-up" style="animation-delay: 0.3s; background-image: url('https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/a22606273d5a49ce9784f9bba60ce36f.png~tplv-a9rns2rl98-24:720:720.png?lk3s=8e244e95&rcl=202601172240561FA8B253723A9A3061A0&rrcfp=8a172a1a&x-expires=1769265656&x-signature=n42hYoLUDZ2zvikfHxaWjrpVPGA%3D'); background-size: cover; background-position: center;">
                     <div class="flex justify-between items-center mb-3">
                         <h3 class="text-base sm:text-lg font-semibold text-gray-800/90">本月结余</h3>
                         <i class="fa fa-balance-scale text-primary text-lg sm:text-xl"></i>
